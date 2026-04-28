@@ -1,359 +1,113 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I AM NHT</title>
-
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>NHT</title>
 <style>
-
-/* ===== BANNER ===== */
-.banner{
-  width:100%;
-  height:38px;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  background:transparent;
-}
-
-.track{
-  display:flex;
-  width:max-content;
-  animation:scroll 35s linear infinite;
-}
-
-.item{
-  font-size:13px;
-  font-weight:700;
-  padding:0 25px;
-  white-space:nowrap;
-
-  background:linear-gradient(90deg,red,orange,yellow,green,cyan,blue,violet);
-  background-size:400%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-
-  animation:rainbow 6s linear infinite;
-}
-
-@keyframes scroll{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
-
-@keyframes rainbow{
-  0%{background-position:0%}
-  100%{background-position:400%}
-}
-
-/* ===== BODY ===== */
-body{
-  margin:0;
-  font-family:system-ui;
-  background:transparent;
-  color:#fff;
-}
-
-/* ===== HEADER ===== */
-.header{
-  padding:14px;
-  text-align:center;
-}
-
-/* LOGO */
-.logo{
-  width:100px;
-  height:100px;
-  border-radius:60%;
-  object-fit:cover;
-  border:3px solid #00ffcc;
-  margin-bottom:9px;
-}
-
-/* NAME */
-.top-name{
-  font-size:20px;
-  font-weight:500;
-  color:#00ffcc;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:6px;
-}
-
-/* TÍCH */
-.fb-verify-big{
-  width:18px;
-  height:18px;
-}
-
-/* ===== NGÀY GIỜ ĐẸP ===== */
-#info{
-  font-size:18px;
-  margin-top:8px;
-  font-weight:800;
-
-  background:linear-gradient(90deg,#00ffcc,#00ffff,#66ff66,#00ffcc);
-  background-size:200%;
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-
-  text-shadow:0 0 6px rgba(0,255,200,0.4);
-
-  animation:timeColor 4s linear infinite;
-}
-
-@keyframes timeColor{
-  0%{background-position:0%}
-  100%{background-position:200%}
-}
-
-/* ===== MENU ===== */
-.glass{
-  margin:10px;
-  padding:14px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.05);
-}
-
-.title-line{
-  font-weight:900;
-}
-
-.NHT-live{
-  font-size:12px;
-  color:#00ffcc;
-}
-
-.btn{
-  margin-top:8px;
-  padding:10px;
-  border-radius:10px;
-  text-align:center;
-  font-weight:800;
-  background:rgba(0,255,204,0.12);
-  border:1px solid rgba(0,255,204,0.35);
-  color:#00ffcc;
-  cursor:pointer;
-}
-
-/* ===== CHAT ===== */
-#chatBox{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:300px;
-  background:rgba(20,20,20,0.95);
-  backdrop-filter:blur(15px);
-  border-radius:18px 18px 0 0;
-  display:none;
-  flex-direction:column;
-  z-index:9999;
-}
-
-/* HEADER CHAT */
-#chatHeader{
-  padding:12px;
-  text-align:center;
-  position:relative;
-}
-
-/* NÚT X */
-.ios-close{
-  position:absolute;
-  right:12px;
-  top:8px;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.2);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-}
-
-/* CONTENT */
-#chatContent{
-  flex:1;
-  overflow:auto;
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-/* MSG */
-.msg{
-  max-width:70%;
-  padding:8px 12px;
-  border-radius:14px;
-}
-
-.user{
-  align-self:flex-end;
-  background:#00d2ff;
-  color:#000;
-}
-
-.bot{
-  background:#2a2a2a;
-}
-
-/* INPUT */
-#chatInput{
-  display:flex;
-  padding:8px;
-}
-
-#chatInput input{
-  flex:1;
-  padding:8px;
-  border-radius:10px;
-  border:none;
-  background:#1a1a1a;
-  color:#fff;
-}
-
-#chatInput button{
-  background:#00d2ff;
-  border:none;
-  padding:8px;
-  border-radius:10px;
-}
-
-/* OPEN BTN */
-#openChatBtn{
-  position:fixed;
-  bottom:15px;
-  right:15px;
-  background:#00d2ff;
-  padding:14px;
-  border-radius:50%;
-  cursor:pointer;
-}
-
-</style>
-</head>
+body{margin:0;font-family:system-ui;background:#0b0b0b;color:#fff}
+.header{padding:16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative}
+.logo-wrap{width:95px;height:95px;border-radius:50%;overflow:hidden;position:relative;background:#111}
+.logo{width:100%;height:100%;object-fit:cover;opacity:0;transition:.4s}
+.logo.loaded{opacity:1}
+.logo-wrap:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);animation:x 1.2s infinite}
+@keyframes x{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.top-name{font-size:22px;font-weight:900;display:flex;align-items:center;gap:8px}
+.verify-badge{width:18px;height:18px;border-radius:50%;background:#1da1f2;display:flex;align-items:center;justify-content:center;animation:p 1.5s infinite;box-shadow:0 0 10px rgba(29,161,242,.6);text-decoration:none}
+.verify-badge svg{width:12px;height:12px;fill:#fff}
+@keyframes p{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+#info{margin-top:2px;font-size:13px;font-weight:800;padding:6px 10px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15)}
+#info span{background:linear-gradient(270deg,#00ffcc,#00d2ff,#7b2cff,#ff00cc,#00ffcc);background-size:400% 400%;animation:t 4s linear infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@keyframes t{0%{background-position:0 50%}100%{background-position:100% 50%}}
+.marquee{margin-top:8px;width:100%;overflow:hidden;height:36px;background:rgba(255,255,255,.05);border-radius:12px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center}
+.track{white-space:nowrap;padding-left:100%;font-size:14px;font-weight:900;background:linear-gradient(90deg,#00ffcc,#00d2ff,#7b2cff,#ff00cc,#00ffcc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:r 25s linear infinite}
+@keyframes r{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.glass{margin:12px;padding:14px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12)}
+.title-line{text-align:center;font-size:16px;font-weight:900}
+.NHT-live{font-size:12px;color:#00ffcc}
+.NHT{margin-top:10px;padding:12px;border-radius:14px;text-align:center;font-weight:800;background:rgba(0,255,200,.08);border:1px solid rgba(0,255,200,.25);cursor:pointer}
+.s{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:10px}
+.b{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);animation:g 2s infinite}
+@keyframes g{0%{box-shadow:0 0 6px rgba(0,255,200,.3)}50%{box-shadow:0 0 18px rgba(0,255,200,.9)}100%{box-shadow:0 0 6px rgba(0,255,200,.3)}}
+.b img{width:22px;height:22px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#00ffcc;color:#000;padding:10px 14px;border-radius:12px;font-weight:800;display:none}
+</style></head>
 
 <body>
-
-<!-- HEADER -->
 <div class="header">
 
-  <img src="logo.png" class="logo">
-
-  <div class="top-name">
-    Ngô Hồng Thái
-    <svg viewBox="0 0 24 24" class="fb-verify-big">
-      <circle cx="12" cy="12" r="12" fill="#1877F2"/>
-      <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none"/>
-    </svg>
-  </div>
-
-  <div id="info">
+<div class="s">
+<a class="b" href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+<a class="b" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg"></a>
 </div>
-  <div class="track">
-	<div class="banner">
-		</div>
-      </div>
-    <div class="item">🔥 Chào mừng bạn đến với trang tải speed coin master
-    <div class="item">💎 Mua chứng chỉ liên hệ ZALO: 0349 3333 97
+
+<div class="logo-wrap"><img class="logo" src="https://i.ibb.co/yn1CnkkD/logo.webp" onload="this.classList.add('loaded')"></div>
+
+<div class="top-name">Ngô Hồng Thái <a class="verify-badge"><svg viewBox="0 0 24 24"><path d="M9 16.2l-3.5-3.5L4 14.2 9 19l12-12-1.5-1.5z"/></svg></a></div>
+
+<div id="info"><span></span></div>
+<div class="marquee"><div class="track" id="m"></div></div>
+
 </div>
-      </div>
-  
-<!-- MENU -->
+
+<!-- IGG -->
 <div class="glass">
-  <div class="title-line">SPEED IGG <span class="NHT-live">update: 3.5.2510</span></div>
-  <div class="btn" onclick="copy(linkIGG)">📋 COPY LINK</div>
-  <div class="btn" onclick="download(linkIGG)">📥 DOWNLOAD</div>
+<div class="title-line">SPEED IGG <span class="NHT-live">28/04/2026 21:21 • <span id="igg">0</span> lượt tải xuống</span></div>
+<div class="NHT" onclick="act('igg','https://zsign.s3.vn-hcm-1.vietnix.cloud/ipa/69f0be9d9a941_IGG2520.ipa',true)">COPY</div>
+<div class="NHT" onclick="act('igg','https://zsign.s3.vn-hcm-1.vietnix.cloud/ipa/69f0be9d9a941_IGG2520.ipa',false)">DOWNLOAD</div>
 </div>
 
+<!-- V1 -->
 <div class="glass">
-  <div class="title-line">SPEED ĐẾM VÒNG <span class="NHT-live">update: 3.5.2510</span></div>
-  <div class="btn" onclick="copy(linkDV1)">📋 COPY LINK</div>
-  <div class="btn" onclick="download(linkDV1)">📥 DOWNLOAD</div>
+<div class="title-line">ĐẾM VÒNG V1 <span class="NHT-live">28/04/2026 21:21 • <span id="v1">0</span> lượt tải xuống</span></div>
+<div class="NHT" onclick="act('v1','https://zsign.s3.vn-hcm-1.vietnix.cloud/ipa/69f0be1a5751e_DV12520.ipa',true)">COPY</div>
+<div class="NHT" onclick="act('v1','https://zsign.s3.vn-hcm-1.vietnix.cloud/ipa/69f0be1a5751e_DV12520.ipa',false)">DOWNLOAD</div>
 </div>
 
+<!-- V2 -->
 <div class="glass">
-  <div class="title-line">SPEED ĐẾM VÒNG V2 <span class="NHT-live">update: 3.5.2510</span></div>
-  <div class="btn" onclick="copy(linkDV2)">📋 COPY LINK</div>
-  <div class="btn" onclick="download(linkDV2)">📥 DOWNLOAD</div>
+<div class="title-line">ĐẾM VÒNG V2 <span class="NHT-live">28/04/2026 21:21 • <span id="v2">0</span> lượt tải xuống</span></div>
+<div class="NHT" onclick="act('v2','https://zsign.s3.vn-hcm-1.vietnix.cloud/ipa/69f0be6d118d0_DV22520.ipa',true)">COPY</div>
+<div class="NHT" onclick="act('v2','https://zsign.s3.vn-hcm-1.vietnix.cloud/ipa/69f0be6d118d0_DV22520.ipa',false)">DOWNLOAD</div>
 </div>
 
-<!-- CHAT -->
-<div id="chatBox">
-  <div id="chatHeader">
-    💬 CHAT
-    <span class="ios-close" onclick="closeChat()">✖</span>
-  </div>
-
-  <div id="chatContent"></div>
-
-  <div id="chatInput">
-    <input id="msg" placeholder="Nhắn..." onkeypress="if(event.key==='Enter') send()">
-    <button onclick="send()">➤</button>
-  </div>
-</div>
-
-<div id="openChatBtn" onclick="openChat()">💬</div>
+<div class="toast" id="t"></div>
 
 <script>
+let count = JSON.parse(localStorage.getItem("nht_count")) || {igg:0,v1:0,v2:0};
 
-/* LINK */
-const linkIGG="https://your-link-igg.ipa";
-const linkDV1="https://your-link-dv1.ipa";
+function save(){localStorage.setItem("nht_count",JSON.stringify(count));}
 
-/* TIME */
-setInterval(()=>{
-  const n=new Date();
-  const days=["CN","T2","T3","T4","T5","T6","T7"];
+function update(){
+document.getElementById("igg").innerText=count.igg;
+document.getElementById("v1").innerText=count.v1;
+document.getElementById("v2").innerText=count.v2;
+}
+update();
 
-  document.getElementById("info").innerText =
-    days[n.getDay()]+" • "+
-    n.toLocaleDateString("vi-VN")+" • "+
-    n.toLocaleTimeString("vi-VN");
-},1000);
+function act(type,link,isCopy){
+count[type]++; // 🔥 COPY + DOWNLOAD đều tính
+save();
+update();
 
-/* CHAT */
-function send(){
-  const m=document.getElementById("msg");
-  if(!m.value) return;
-
-  const div=document.createElement("div");
-  div.className="msg user";
-  div.innerText=m.value;
-
-  chatContent.appendChild(div);
-  m.value="";
+if(isCopy){
+navigator.clipboard.writeText(link);
+show("ĐÃ COPY ✅");
+}else{
+show("ĐANG TẢI...");
+setTimeout(()=>window.open(link),600);
+}
 }
 
-function openChat(){
-  chatBox.style.display="flex";
-  openChatBtn.style.display="none";
+function show(x){
+let t=document.getElementById("t");
+t.innerText=x;
+t.style.display="block";
+setTimeout(()=>t.style.display="none",1200);
 }
 
-function closeChat(){
-  chatBox.style.display="none";
-  openChatBtn.style.display="block";
-}
+const m=document.getElementById("m"),info=document.getElementById("info");
+m.innerText="🔥 NHT SPEED UPDATE LIÊN TỤC ⚡ FREE MIỄN PHÍ 💎 CẦN MUA CHỨNG CHỈ CÀI SPEED LIÊN HỆ ZALO 💬 0349 3333 97 Ngô Hồng Thái";
 
-/* COPY */
-function copy(t){
-  navigator.clipboard.writeText(t);
-  alert("Đã copy!");
+function time(){
+let d=new Date(),a=["Chủ Nhật","Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7"];
+info.innerHTML="<span>I AM NHT • "+a[d.getDay()]+" • "+d.toLocaleTimeString()+"</span>"
 }
-
-/* DOWNLOAD */
-function download(u){
-  window.open(u);
-}
-
+time();setInterval(time,1000);
 </script>
-
-</body>
-</html>
+</body></html>
